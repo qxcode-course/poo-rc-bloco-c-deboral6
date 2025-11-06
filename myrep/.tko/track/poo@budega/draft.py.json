@@ -62,8 +62,58 @@
         },
         {
             "label": "2025-11-05_23-34-37",
-            "content": "class Cliente:\n    def __init__(self, nome: str):\n        self._nome = nome\n\n    def getNome(self):\n        return self._nome\n    \n    def __str__(self):\n        return f\"{self._nome}\"\n\nclass Marker:\n    def __init__(self, quantidadeC: int):\n        self.caixas: list[Cliente | None] = []\n        self.filaEspera: list[Cliente] = []\n        for _ in range(quantidadeC):\n            self.caixas.append(None)\n\n    def __str__(self):\n       caixa = \", \".join([str(cliente) if cliente else \"----\" for cliente in self.caixas])\n       espera = \", \".join([str(cliente) for cliente in self.filaEspera])\n       return f\"Caixas: [{caixa}] Espera: [{espera}]\"\n    \n    def arrive(self, pessoa: Cliente):\n        self.filaEspera.append(pessoa)\n\n    def call(self, index: int):\n        if self.caixas[index] is not None:\n            print(\"fail: caixa ocupado\")\n        elif not self.filaEspera:\n            print(\"fail: sem clientes\")\n\n        else:\n            cliente = self.filaEspera.pop(0)\n            self.caixas[index] = cliente\n\n    def finish(self, index: int):\n        if index < 0 or index >= len(self.caixas):\n            print(\"fail: caixa inexistente\")\n        \n        elif self.caixas[index] is None:\n            print(\"fail: caixa vazio\")\n        \n        else:\n           cliente = self.caixas[index]\n           print(cliente)\n           self.caixas[index] = None\n           \ndef main():\n    marker = None\n\n    while True:\n        comando = input().strip()\n        if not comando:\n            continue\n\n        partes = comando.split()\n        comando= partes[0]\n        args = partes[1:]\n\n        if comando == \"\":\n            continue\n        elif comando == \"end\":\n            break\n        elif comando == \"init\":\n            if len(args) < 1:\n                continue\n            qnt = int(args[0])\n            marker = Marker(qnt)\n\n        elif comando == \"show\":\n            print(marker)\n\n        elif comando == \"arrive\":\n                if marker is None:\n                    print(\"fail: inicialize primeiro com 'init'\")\n                    continue\n                    nome = args[0]\n                    marker.chegar(Cliente(nome))\n\n        elif comando == \"call\":\n                if marker is None:\n                    print(\"fail: inicialize primeiro com 'init'\")\n                    continue\n                    marker.call(index)\n\n        elif comando == \"finish\":\n            if marker is None:\n                print(\"fail: inicialize primeiro com 'init'\")\n            elif len(args) < 1:\n                print(\"fail: argumento invalido\")\n            else:\n                try:\n                    index = int(args[0])\n                except ValueError:\n                    print(\"fail: argumento invalido\")\n                    continue\n                marker.finish(index)\n        else:\n            print(\"fail: comando invalido\")\n            \nif __name__ == \"__main__\":\n    main()\n\n        \n        \n\n\n\n\n        ",
+            "content": "@@ -625,10 +625,8 @@\n xa%7D%5D\n-%5Cn\n  Esp\n@@ -646,27 +646,8 @@\n %7D%5D%22%0A\n-       print(line)%0A\n     \n",
             "lines": "110"
+        },
+        {
+            "label": "2025-11-06_22-00-28",
+            "content": "@@ -1481,28 +1481,8 @@\n p()%0A\n-        print(line)%0A\n     \n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-11-06_22-01-36",
+            "content": "@@ -181,33 +181,8 @@\n me%7D%22\n-%0A        print(line)%0A    \n %0A%0Acl\n@@ -644,16 +644,35 @@\n pera%7D%5D%22%0A\n+       print(line)%0A\n     %0A   \n@@ -1477,16 +1477,36 @@\n strip()%0A\n+        print(line)%0A\n         \n",
+            "lines": "112"
+        },
+        {
+            "label": "2025-11-06_22-02-25",
+            "content": "@@ -178,16 +178,36 @@\n _nome%7D%22%0A\n+        print(line)%0A\n     %0A%0Acl\n@@ -1457,20 +1457,23 @@\n         \n-line\n+comando\n  = input\n@@ -1487,34 +1487,8 @@\n p()%0A\n-        print(f%22$%7Bline%7D%22)%0A\n     \n",
+            "lines": "112"
+        },
+        {
+            "label": "2025-11-06_22-07-37",
+            "content": "@@ -1498,21 +1498,43 @@\n     \n-comando = l\n+if not comando:%0A            cont\n in\n+u\n e%0A%0A \n",
+            "lines": "112"
+        },
+        {
+            "label": "2025-11-06_22-07-58",
+            "content": "@@ -628,16 +628,17 @@\n aixa%7D%5D%5Cn\n+ \n Espera: \n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-11-06_22-08-25",
+            "content": "@@ -489,17 +489,16 @@\n se %22----\n--\n %22 for cl\n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-11-06_22-08-44",
+            "content": "@@ -622,15 +622,17 @@\n as: \n+%5B\n %7Bcaixa%7D\n+%5D\n %5CnEs\n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-11-06_22-10-58",
+            "content": "@@ -622,17 +622,15 @@\n as: \n-%5B\n %7Bcaixa%7D\n-%5D\n %5CnEs\n@@ -1496,40 +1496,21 @@\n     \n-if not line:%0A            cont\n+comando = l\n in\n-u\n e%0A%0A \n@@ -1525,20 +1525,23 @@\n artes = \n-line\n+comando\n .split()\n@@ -1556,17 +1556,16 @@\n  comando\n- \n = partes\n@@ -1616,16 +1616,65 @@\n mando ==\n+ %22%22:%0A            continue%0A        elif comando ==\n  %22end%22:%0A\n@@ -1691,17 +1691,16 @@\n   break%0A\n-%0A\n         \n@@ -1757,57 +1757,8 @@\n  1:%0A\n-                print(%22fail: faltam argumentos%22)%0A\n     \n@@ -1879,123 +1879,8 @@\n w%22:%0A\n-            if marker is None:%0A                print(%22fail: inicialize primeiro com 'init'%22)%0A            else:%0A    \n     \n@@ -1940,32 +1940,36 @@\n e%22:%0A            \n+  \n+  \n if marker is Non\n@@ -1963,32 +1963,36 @@\n marker is None:%0A\n+    \n                 \n@@ -2049,32 +2049,36 @@\n             \n+    \n continue\n %0A           \n@@ -2069,87 +2069,8 @@\n inue\n-%0A            if len(args) %3C 1:%0A                print(%22fail: faltam argumentos%22)\n %0A   \n@@ -2083,32 +2083,15 @@\n     \n-   continue%0A\n        \n-     \n nome\n@@ -2117,21 +2117,29 @@\n     \n+        \n marker.\n-arrive\n+chegar\n (Cli\n@@ -2187,32 +2187,36 @@\n l%22:%0A            \n+    \n if marker is Non\n@@ -2226,32 +2226,36 @@\n                 \n+  \n+  \n print(%22fail: ini\n@@ -2292,32 +2292,36 @@\n                 \n+    \n continue%0A       \n@@ -2325,264 +2325,8 @@\n     \n-    if len(args) %3C 1:%0A                print(%22fail: faltam argumentos%22)%0A                continue%0A            try:%0A                index = int(args%5B0%5D)%0A            except ValueError:%0A                print(%22fail: argumento invalido%22)%0A                continue%0A\n     \n@@ -2496,33 +2496,10 @@\n     \n-    continue%0A            \n+el\n if l\n@@ -2544,15 +2544,8 @@\n ail:\n- faltam\n  arg\n@@ -2550,17 +2550,25 @@\n rgumento\n-s\n+ invalido\n %22)%0A     \n@@ -2570,37 +2570,34 @@\n             \n-    continue%0A\n+else:%0A    \n             \n@@ -2601,16 +2601,20 @@\n    try:%0A\n+    \n         \n@@ -2654,16 +2654,20 @@\n         \n+    \n except V\n@@ -2677,16 +2677,20 @@\n eError:%0A\n+    \n         \n@@ -2739,32 +2739,36 @@\n                 \n+ \n+   \n continue%0A       \n@@ -2752,32 +2752,36 @@\n        continue%0A\n+    \n             mark\n@@ -2789,33 +2789,32 @@\n r.finish(index)%0A\n-%0A\n         else:%0A  \n@@ -2855,16 +2855,29 @@\n alido%22)%0A\n+            %0A\n if __nam\n@@ -2907,16 +2907,38 @@\n main()%0A%0A        \n+%0A        %0A%0A%0A%0A%0A        \n",
+            "lines": "111"
+        },
+        {
+            "label": "2025-11-06_22-18-48",
+            "content": "@@ -1155,16 +1155,25 @@\n tente%22)%0A\n+        %0A\n         \n@@ -1197,32 +1197,32 @@\n index%5D is None:%0A\n-\n             prin\n@@ -1240,24 +1240,33 @@\n ixa vazio%22)%0A\n+        %0A\n         else\n@@ -1260,32 +1260,97 @@\n %0A        else:%0A \n+          cliente = self.caixas%5Bindex%5D%0A           print(cliente)%0A\n            self.\n@@ -1370,16 +1370,27 @@\n  = None%0A\n+           \n %0Adef mai\n",
+            "lines": "121"
+        },
+        {
+            "label": "2025-11-06_22-23-14",
+            "content": "class Cliente:\n    def __init__(self, nome: str):\n        self._nome = nome\n\n    def getNome(self):\n        return self._nome\n    \n    def __str__(self):\n        return f\"{self._nome}\"\n    \n\nclass Marker:\n    def __init__(self, quantidadeC: int):\n        self.caixas: list[Cliente | None] = []\n        self.filaEspera: list[Cliente] = []\n        for _ in range(quantidadeC):\n            self.caixas.append(None)\n\n    def __str__(self):\n       caixa = \", \".join([str(cliente) if cliente else \"-----\" for cliente in self.caixas])\n       espera = \", \".join([str(cliente) for cliente in self.filaEspera])\n       return f\"Caixas: [{caixa}]\\nEspera: [{espera}]\"\n    \n    def arrive(self, pessoa: Cliente):\n        self.filaEspera.append(pessoa)\n\n    def call(self, index: int):\n        if self.caixas[index] is not None:\n            print(\"fail: caixa ocupado\")\n        elif not self.filaEspera:\n            print(\"fail: sem clientes\")\n\n        else:\n            cliente = self.filaEspera.pop(0)\n            self.caixas[index] = cliente\n\n    def finish(self, index: int):\n        if index < 0 or index >= len(self.caixas):\n            print(\"fail: caixa inexistente\")\n        elif self.caixas[index] is None:\n            print(\"fail: caixa vazio\")\n        else:\n            self.caixas[index] = None\n\ndef main():\n    marker = None\n\n    while True:\n        line = input().strip()\n        print(f\"${line}\")\n        if not line:\n            continue\n\n        partes = line.split()\n        comando = partes[0]\n        args = partes[1:]\n\n        if comando == \"end\":\n            break\n\n        elif comando == \"init\":\n            if len(args) < 1:\n                print(\"fail: faltam argumentos\")\n                continue\n            qnt = int(args[0])\n            marker = Marker(qnt)\n\n        elif comando == \"show\":\n            if marker is None:\n                print(\"fail: inicialize primeiro com 'init'\")\n            else:\n                print(marker)\n\n        elif comando == \"arrive\":\n            if marker is None:\n                print(\"fail: inicialize primeiro com 'init'\")\n                continue\n            if len(args) < 1:\n                print(\"fail: faltam argumentos\")\n                continue\n            nome = args[0]\n            marker.arrive(Cliente(nome))\n\n        elif comando == \"call\":\n            if marker is None:\n                print(\"fail: inicialize primeiro com 'init'\")\n                continue\n            if len(args) < 1:\n                print(\"fail: faltam argumentos\")\n                continue\n            try:\n                index = int(args[0])\n            except ValueError:\n                print(\"fail: argumento invalido\")\n                continue\n            marker.call(index)\n\n        elif comando == \"finish\":\n            if marker is None:\n                print(\"fail: inicialize primeiro com 'init'\")\n                continue\n            if len(args) < 1:\n                print(\"fail: faltam argumentos\")\n                continue\n            try:\n                index = int(args[0])\n            except ValueError:\n                print(\"fail: argumento invalido\")\n                continue\n            marker.finish(index)\n\n        else:\n            print(\"fail: comando invalido\")\nif __name__ == \"__main__\":\n    main()\n\n        ",
+            "lines": "117"
         }
     ]
 }

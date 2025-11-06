@@ -7,6 +7,7 @@ class Cliente:
     
     def __str__(self):
         return f"{self._nome}"
+    
 
 class Marker:
     def __init__(self, quantidadeC: int):
@@ -16,9 +17,9 @@ class Marker:
             self.caixas.append(None)
 
     def __str__(self):
-       caixa = ", ".join([str(cliente) if cliente else "----" for cliente in self.caixas])
+       caixa = ", ".join([str(cliente) if cliente else "-----" for cliente in self.caixas])
        espera = ", ".join([str(cliente) for cliente in self.filaEspera])
-       return f"Caixas: [{caixa}] Espera: [{espera}]"
+       return f"Caixas: [{caixa}]\nEspera: [{espera}]"
     
     def arrive(self, pessoa: Cliente):
         self.filaEspera.append(pessoa)
@@ -36,75 +37,81 @@ class Marker:
     def finish(self, index: int):
         if index < 0 or index >= len(self.caixas):
             print("fail: caixa inexistente")
-        
         elif self.caixas[index] is None:
             print("fail: caixa vazio")
-        
         else:
-           cliente = self.caixas[index]
-           print(cliente)
-           self.caixas[index] = None
-           
+            self.caixas[index] = None
+
 def main():
     marker = None
 
     while True:
-        comando = input().strip()
-        if not comando:
+        line = input().strip()
+        print(f"${line}")
+        if not line:
             continue
 
-        partes = comando.split()
-        comando= partes[0]
+        partes = line.split()
+        comando = partes[0]
         args = partes[1:]
 
-        if comando == "":
-            continue
-        elif comando == "end":
+        if comando == "end":
             break
+
         elif comando == "init":
             if len(args) < 1:
+                print("fail: faltam argumentos")
                 continue
             qnt = int(args[0])
             marker = Marker(qnt)
 
         elif comando == "show":
-            print(marker)
+            if marker is None:
+                print("fail: inicialize primeiro com 'init'")
+            else:
+                print(marker)
 
         elif comando == "arrive":
-                if marker is None:
-                    print("fail: inicialize primeiro com 'init'")
-                    continue
-                    nome = args[0]
-                    marker.chegar(Cliente(nome))
+            if marker is None:
+                print("fail: inicialize primeiro com 'init'")
+                continue
+            if len(args) < 1:
+                print("fail: faltam argumentos")
+                continue
+            nome = args[0]
+            marker.arrive(Cliente(nome))
 
         elif comando == "call":
-                if marker is None:
-                    print("fail: inicialize primeiro com 'init'")
-                    continue
-                    marker.call(index)
+            if marker is None:
+                print("fail: inicialize primeiro com 'init'")
+                continue
+            if len(args) < 1:
+                print("fail: faltam argumentos")
+                continue
+            try:
+                index = int(args[0])
+            except ValueError:
+                print("fail: argumento invalido")
+                continue
+            marker.call(index)
 
         elif comando == "finish":
             if marker is None:
                 print("fail: inicialize primeiro com 'init'")
-            elif len(args) < 1:
+                continue
+            if len(args) < 1:
+                print("fail: faltam argumentos")
+                continue
+            try:
+                index = int(args[0])
+            except ValueError:
                 print("fail: argumento invalido")
-            else:
-                try:
-                    index = int(args[0])
-                except ValueError:
-                    print("fail: argumento invalido")
-                    continue
-                marker.finish(index)
+                continue
+            marker.finish(index)
+
         else:
             print("fail: comando invalido")
-            
+
 if __name__ == "__main__":
     main()
-
-        
-        
-
-
-
-
         

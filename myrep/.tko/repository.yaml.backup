@@ -12,13 +12,14 @@ sources:
   type: clone
   branch: master
   cache_path: /workspaces/poo-rc-bloco-c-deboral6/myrep/.tko/cache/poo/Readme.md
-  cache_timestamp: '2025-11-05 23:09:32'
+  cache_timestamp: '2025-11-06 22:00:08'
   filters:
   - listas
 expanded:
 - poo@campanha-principal
 - poo@bloco_c-listas
-tasks: {}
+tasks:
+  poo@budega: '{rate:100}'
 flags:
   quests: 0
   tracks: 0
