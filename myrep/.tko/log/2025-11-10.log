@@ -1,0 +1,5 @@
+2025-11-10 19:20:29, SELF, v:1, k:poo@budega, rate:100, human:sim, iagen:nao, guide:sim, other:nao, alone:6, study:180
+2025-11-10 19:20:40, MOVE, v:1, k:poo@array, mode:PICK
+2025-11-10 19:20:47, MOVE, v:1, k:poo@array, mode:BACK
+2025-11-10 19:22:50, SELF, v:1, k:poo@array, human:sim, iagen:nao, guide:sim, other:nao, alone:8, study:120
+2025-11-10 19:22:58, MOVE, v:1, k:poo@lapiseira, mode:DOWN

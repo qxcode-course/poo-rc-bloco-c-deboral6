@@ -11,3 +11,6 @@
 2025-11-06 22:18:48, EXEC, v:1, k:poo@budega, mode:FULL, rate:70, size:121
 2025-11-06 22:23:14, EXEC, v:1, k:poo@budega, mode:FULL, rate:100, size:117
 2025-11-06 22:25:12, MOVE, v:1, k:poo@budega, mode:BACK
+2025-11-06 22:26:30, MOVE, v:1, k:poo@array, mode:PICK
+2025-11-06 22:26:34, EXEC, v:1, k:poo@array, mode:LOCK, rate:0
+2025-11-06 22:26:44, MOVE, v:1, k:poo@array, mode:BACK

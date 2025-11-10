@@ -12,14 +12,15 @@ sources:
   type: clone
   branch: master
   cache_path: /workspaces/poo-rc-bloco-c-deboral6/myrep/.tko/cache/poo/Readme.md
-  cache_timestamp: '2025-11-06 22:00:08'
+  cache_timestamp: '2025-11-10 19:16:53'
   filters:
   - listas
 expanded:
 - poo@campanha-principal
 - poo@bloco_c-listas
 tasks:
-  poo@budega: '{rate:100}'
+  poo@array: '{human:sim, iagen:nao, guide:sim, other:nao, alone:8, study:120}'
+  poo@budega: '{rate:100, human:sim, iagen:nao, guide:sim, other:nao, alone:6, study:180}'
 flags:
   quests: 0
   tracks: 0
@@ -27,4 +28,4 @@ flags:
   graph: 0
   xray: 0
 lang: py
-selected: poo@budega
+selected: poo@lapiseira
