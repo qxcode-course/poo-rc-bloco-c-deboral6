@@ -1,0 +1,49 @@
+{
+    "patches": [
+        {
+            "label": "2025-11-18_19-06-35",
+            "content": "@@ -213,196 +213,8 @@\n  def\n- setNome(self, nome: str):%0A%0A    def setAge(self, age: int):%0A%0A    def __str__(self):%0A        return f%22%7Bself.__nome%7D %7Bself.__age%7D%22%0A        %0A%0Aclass PulaPula:%0A    def __init__(self):%0A        %0A\n %0A%0A  \n",
+            "lines": "12"
+        },
+        {
+            "label": "2025-11-18_19-12-10",
+            "content": "@@ -392,190 +392,8 @@\n f):%0A\n-        self.fila: list%5BCrian%C3%A7a %7C None%5D = %5B%5D%0A        self.brinquedo: list%5BCrian%C3%A7a %7C None%5D = %5B%5D%0A%0A    def chegar(self, crian%C3%A7a: Crian%C3%A7a):%0A        self.fila.append(crian%C3%A7a)%0A        %0A%0A%0A%0A\n     \n",
+            "lines": "23"
+        },
+        {
+            "label": "2025-11-18_19-19-21",
+            "content": "@@ -562,175 +562,16 @@\n %C3%A7a)%0A\n-%0A    def entrar(self):%0A        if not self.fila:%0A            print(%22fail: nao tem ninguem na fila%22)%0A            return%0A        self.brinquedo.append(self.fila.pop(0))%0A\n+        \n %0A%0A%0A%0A\n",
+            "lines": "32"
+        },
+        {
+            "label": "2025-11-18_19-22-31",
+            "content": "@@ -730,193 +730,8 @@\n ))%0A%0A\n-    def sair(self):%0A        if not self.brinquedo:%0A            print(%22fail: nao tem ninguem no pula-pula%22)%0A            return%0A        self.fila.append(self.brinquedo.pop(0))%0A%0A        %0A%0A\n %0A%0A%0A \n",
+            "lines": "38"
+        },
+        {
+            "label": "2025-11-18_19-26-12",
+            "content": "@@ -205,16 +205,80 @@\n _age%0A   \n+ def setNome(self, nome: str):%0A%0A    def setAge(self, age: int):%0A\n %0A    def\n@@ -347,16 +347,17 @@\n        %0A\n+%0A\n class Pu\n@@ -909,73 +909,12 @@\n     \n-def __str__(self):%0A        fila_str = %22+%22 %5C%0A        %22%22%0A        %0A%0A\n+    \n %0A%0A%0A%0A\n",
+            "lines": "46"
+        },
+        {
+            "label": "2025-11-18_19-33-46",
+            "content": "@@ -883,61 +883,12 @@\n  = %22\n-%5B%22 + %22, %22.join(str(cria) for cria in self.fila) + %22%5D%22\n++%22 %5C\n %0A   \n@@ -892,21 +892,18 @@\n         \n-%0A    \n+%22%22\n %0A       \n",
+            "lines": "47"
+        },
+        {
+            "label": "2025-11-18_19-38-27",
+            "content": "@@ -945,87 +945,8 @@\n     \n-brinquedo_str = %22%5B%22 + %22, %22.join(str(str(cria) for cria in self.brinquedo))+ %22%5D%22\n %0A   \n",
+            "lines": "48"
+        },
+        {
+            "label": "2025-11-18_19-43-43",
+            "content": "@@ -969,32 +969,36 @@\n + %22, %22.join(str(\n+str(\n cria) for cria i\n@@ -1018,64 +1018,15 @@\n edo)\n+)\n + %22%5D%22%0A\n-        return f%22%7Bfila_str%7D %7Bbrinquedo_str%7D%22%0A    %0A\n     \n",
+            "lines": "48"
+        },
+        {
+            "label": "2025-11-18_19-46-23",
+            "content": "class Crian\u00e7a:\n    def __init__(self, nome: str, age: int):\n        self.__nome = nome\n        self.__age = 0\n\n    def getNome(self):\n        return self.__nome\n    def getAge(self):\n        return self.__age\n   \n    def __str__(self):\n        return f\"{self.__nome} {self.__age}\"\n        \nclass PulaPula:\n    def __init__(self):\n        self.fila: list[Crian\u00e7a | None] = []\n        self.brinquedo: list[Crian\u00e7a | None] = []\n\n    def chegar(self, crian\u00e7a: Crian\u00e7a):\n        self.fila.append(crian\u00e7a)\n\n    def entrar(self):\n        if not self.fila:\n            print(\"fail: nao tem ninguem na fila\")\n            return\n        self.brinquedo.append(self.fila.pop(0))\n\n    def sair(self):\n        if not self.brinquedo:\n            print(\"fail: nao tem ninguem no pula-pula\")\n            return\n        self.fila.append(self.brinquedo.pop(0))\n\n    def __str__(self):\n        fila_str = \"[\" + \", \".join(str(cria) for cria in self.fila) + \"]\"\n        brinquedo_str = \"[\" + \", \".join(str(cria) for cria in self.brinquedo)+ \"]\"\n        return f\"{fila_str} {brinquedo_str}\"\n    \n    \n        \n\n\n\n\n\n\n        \n\n\n        ",
+            "lines": "50"
+        }
+    ]
+}
