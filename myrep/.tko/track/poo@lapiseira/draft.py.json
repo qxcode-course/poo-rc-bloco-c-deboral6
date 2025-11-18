@@ -7,8 +7,88 @@
         },
         {
             "label": "2025-11-15_01-03-14",
-            "content": "class Grafite:\n    def __init__(self, calibre: float, dureza: str, tam: int):\n        self.__calibre = calibre\n        self.__dureza = dureza\n        self.tam = tam\n\n    def setTam(self, valor):\n        self.setTam = valor\n    def getCalibre(self):\n        return self.__calibre\n    def getDureza(self):\n        return self.__dureza\n    def getTam(self):\n        return self.tam\n    \n    def __str__(self):\n        return f\"{self.__calibre}: {self.__dureza}: {self.tam}\"\n        \nclass Lapiseira:\n    def __init__(self, calibre: float, bico: float):\n        self.__calibre: float\n        self.bico = float\n        self.tambor: list[Grafite | None] = []\n\n    def insert(self, graf: Grafite):\n        if graf.getCalibre() == self.__calibre:\n            self.tambor.append(graf)\n        else:\n            print(\"fail: grafite incompativel\")\n\n    def puxarGrafite(self):\n        if self.__bico is not None:\n            print(\"fail: j\u00e1 existe grafite no bico\")\n            return\n        if not self.tambor:\n            print(\"fail: o tambor est\u00e1 vazio\")\n        self.__bico = self.tambor.pop(0)\n\n    def removerGrafite(self):\n        if self.bico is None:\n            print(\"fail: n\u00e3o h\u00e1 grafite no bico\")\n        self.bico = None\n\n    def escrever(self):\n        if self.__bico is None:\n            print(\"fail: nao existe grafite no bico\")\n            return\n        gasto = self.bico.gastoFolha()\n        tamanho = self.bico.getTam() \n\n        if tamanho <= 10:\n            print(\"fail: tamanho insuficiente\")\n            return\n\n        if tamanho - gasto < 10:\n            print(\"fail: folha incompleta\")\n            self.__bico = None\n            return\n        \n        self.bico.setTam( tamanho - gasto)\n\n        if self.__bico.getTam() == 10:\n            self.__bico = None\n\n        \n\n\n\n\n        \n\n        \n    \n\n\n    \n    \n\n\n        \n\n\n        \n        ",
+            "content": "@@ -1745,21 +1745,8 @@\n 10:%0A\n-            %0A\n     \n",
             "lines": "84"
+        },
+        {
+            "label": "2025-11-18_13-01-59",
+            "content": "@@ -651,175 +651,8 @@\n %5B%5D%0A%0A\n-    def getCalibre(self):%0A        return self.__calibre%0A    %0A    def getBico(self):%0A        return self.bico%0A    %0A    def getTambor(self):%0A        return self.tambor%0A%0A\n     \n@@ -1741,16 +1741,28 @@\n  == 10:%0A\n+            \n %0A       \n",
+            "lines": "85"
+        },
+        {
+            "label": "2025-11-18_13-06-18",
+            "content": "@@ -1039,32 +1039,34 @@\n     if self.\n+__\n bico is \n None:%0A      \n@@ -1045,32 +1045,36 @@\n  self.__bico is \n+not \n None:%0A          \n@@ -1080,35 +1080,34 @@\n    print(%22fail: \n-nao\n+j%C3%A1\n  existe grafite \n@@ -1108,32 +1108,126 @@\n afite no bico%22)%0A\n+            return%0A        if not self.tambor:%0A            print(%22fail: o tambor est%C3%A1 vazio%22)%0A\n         self.__b\n",
+            "lines": "94"
+        },
+        {
+            "label": "2025-11-18_13-11-47",
+            "content": "@@ -1039,29 +1039,29 @@\n     \n-print(%22tambor vazio%22)\n+if self.bico is None:\n %0A   \n",
+            "lines": "91"
+        },
+        {
+            "label": "2025-11-18_13-13-34",
+            "content": "@@ -381,54 +381,8 @@\n    %0A\n-    def usageParsheet(self):%0A        return 4%0A\n     \n@@ -1057,38 +1057,77 @@\n vazio%22)%0A        \n-return\n+    print(%22fail: nao existe grafite no bico%22)\n %0A        self.__\n@@ -1242,22 +1242,18 @@\n il: n%C3%A3o \n-existe\n+h%C3%A1\n  grafite\n@@ -1426,35 +1426,70 @@\n         \n-%0A        if\n+gasto = self.bico.gastoFolha()%0A        tamanho =\n  self.\n-__\n bico.get\n@@ -1494,16 +1494,37 @@\n etTam() \n+%0A%0A        if tamanho \n %3C= 10:%0A \n@@ -1593,84 +1593,27 @@\n urn%0A\n-        gasto = self.__bico.usagePersheet()%0A%0A        if self.__bico.getTam()\n+%0A        if tamanho\n  - g\n@@ -1694,42 +1694,15 @@\n bico\n-.gastar(self.__bico.getTam() - 10)\n+ = None\n %0A   \n@@ -1743,29 +1743,83 @@\n elf.\n-__\n bico.\n-gastar(gasto)%0A\n+setTam( tamanho - gasto)%0A%0A        if self.__bico.getTam() == 10:%0A%0A    \n     \n",
+            "lines": "91"
+        },
+        {
+            "label": "2025-11-18_13-26-26",
+            "content": "@@ -1831,263 +1831,8 @@\n ne%0A%0A\n-    def __str__(self):%0A        return f%22calibre%7Bself.__calibre%7D%22%0A    %0Adef main():%0A    lapiseira = None%0A    while True:%0A        line = input()%0A        print(f%22$%7Bline%7D%22)%0A        args = line.split()%0A%0A        if args%5B0%5D == %22end%22:%0A            break%0A%0A        %0A%0A\n     \n",
+            "lines": "89"
+        },
+        {
+            "label": "2025-11-18_13-31-17",
+            "content": "@@ -2075,293 +2075,8 @@\n eak%0A\n-        elif args%5B0%5D == %22init%22:%0A            lapiseira = Lapiseira(float(args%5B1%5D))%0A            continue%0A        elif args%5B0%5D == %22show%22:%0A            calibre = lapiseira.getCalibre()%0A            bico = lapiseira.getBico()%0A            tambor = lapiseira.getTambor()%0A%0A            bico_str%0A%0A\n %0A   \n",
+            "lines": "104"
+        },
+        {
+            "label": "2025-11-18_13-35-00",
+            "content": "@@ -2358,135 +2358,8 @@\n _str\n- = str(bico) if bico is not None else %22%5B%5D%22%0A            tambor_str = %22%3C%22 + %22%22.join(str(g)) for g in tambor) + %22%3E%22 if len(tambor)\n %0A%0A%0A \n",
+            "lines": "114"
+        },
+        {
+            "label": "2025-11-18_13-42-15",
+            "content": "@@ -2487,369 +2487,8 @@\n r)%0A%0A\n-            print(f%22calibre: %7Bcalibre%7D, bico: %7Bbico_str%7D, tambor: %7Btambor_str%7D%22)%0A        %0A        elif args%5B0%5D == %22insert%22:%0A                calibre = float(args%5B1%5D)%0A                dureza = args%5B2%5D%0A                tam = int(args%5B3%5D)%0A                graf = Grafite(dureza, calibre, tam)%0A                lapiseira.insert(graf)%0A%0A        elif args%5B0%5D == %22pull%22%0A%0A%0A%0A%0A\n %0A   \n",
+            "lines": "115"
+        },
+        {
+            "label": "2025-11-18_13-47-13",
+            "content": "@@ -2843,54 +2843,8 @@\n ull%22\n-:%0A            lapiseira.puxarGrafite()%0A%0Amain()\n %0A%0A%0A%0A\n",
+            "lines": "129"
+        },
+        {
+            "label": "2025-11-18_13-48-15",
+            "content": "@@ -2883,212 +2883,8 @@\n ()%0A%0A\n-        elif args%5B0%5D == %22remover%22:%0A            lapiseira.removerGrafite()%0A%0A        elif args%5B0%5D == %22white%22:%0A            lapiseira.escrever()%0A        elif args%5B0%5D == %22show%22:%0A            print(lapiseira)%0A%0A%0A\n main\n",
+            "lines": "132"
+        },
+        {
+            "label": "2025-11-18_13-51-41",
+            "content": "@@ -3081,16 +3081,18 @@\n iseira)%0A\n+%0A%0A\n main()%0A%0A\n",
+            "lines": "141"
+        },
+        {
+            "label": "2025-11-18_13-51-49",
+            "content": "@@ -1077,28 +1077,24 @@\n f):%0A        \n-    \n print(%22tambo\n@@ -1099,28 +1099,24 @@\n bor vazio%22)%0A\n-    \n         retu\n",
+            "lines": "139"
+        },
+        {
+            "label": "2025-11-18_13-53-09",
+            "content": "@@ -1085,150 +1085,19 @@\n     \n-if self.__bico is not None:%0A            print(%22fail: ja existe grafite no bico%22)%0A%0A        if len(self, tambor) == 0:%0A            print(%22fail: \n+    print(%22\n tamb\n",
+            "lines": "139"
+        },
+        {
+            "label": "2025-11-18_13-56-24",
+            "content": "@@ -1178,25 +1178,26 @@\n  if len(self\n-.\n+, \n tambor) == 0\n",
+            "lines": "143"
+        },
+        {
+            "label": "2025-11-18_13-56-57",
+            "content": "@@ -380,108 +380,8 @@\n     \n-def gastar(self, valor):%0A        self.tam -= valor%0A        if self.tam %3C 0:%0A            self.tam = 0\n %0A   \n",
+            "lines": "143"
+        },
+        {
+            "label": "2025-11-18_13-59-01",
+            "content": "class Grafite:\n    def __init__(self, calibre: float, dureza: str, tam: int):\n        self.__calibre = calibre\n        self.__dureza = dureza\n        self.tam = tam\n\n    def setTam(self, valor):\n        self.setTam = valor\n    def getCalibre(self):\n        return self.__calibre\n    def getDureza(self):\n        return self.__dureza\n    def getTam(self):\n        return self.tam\n    def gastar(self, valor):\n        self.tam -= valor\n        if self.tam < 0:\n            self.tam = 0\n    def usageParsheet(self):\n        return 4\n    def __str__(self):\n        return f\"{self.__calibre}: {self.__dureza}: {self.tam}\"\n        \nclass Lapiseira:\n    def __init__(self, calibre: float, bico: float):\n        self.__calibre: float\n        self.bico = float\n        self.tambor: list[Grafite | None] = []\n\n    def getCalibre(self):\n        return self.__calibre\n    \n    def getBico(self):\n        return self.bico\n    \n    def getTambor(self):\n        return self.tambor\n\n    def insert(self, graf: Grafite):\n        if graf.getCalibre() == self.__calibre:\n            self.tambor.append(graf)\n        else:\n            print(\"fail: grafite incompativel\")\n\n    def puxarGrafite(self):\n        if self.__bico is not None:\n            print(\"fail: ja existe grafite no bico\")\n\n        if len(self.tambor) == 0:\n            print(\"fail: tambor vazio\")\n            return\n        self.__bico = self.tambor.pop(0)\n\n    def removerGrafite(self):\n        if self.bico is None:\n            print(\"fail: n\u00e3o existe grafite no bico\")\n        self.bico = None\n\n    def escrever(self):\n        if self.__bico is None:\n            print(\"fail: nao existe grafite no bico\")\n            return\n        \n        if self.__bico.getTam() <= 10:\n            print(\"fail: tamanho insuficiente\")\n            return\n        gasto = self.__bico.usagePersheet()\n\n        if self.__bico.getTam() - gasto < 10:\n            print(\"fail: folha incompleta\")\n            self.__bico.gastar(self.__bico.getTam() - 10)\n            return\n        \n        self.__bico.gastar(gasto)\n        self.__bico = None\n\n    def __str__(self):\n        return f\"calibre{self.__calibre}\"\n    \ndef main():\n    lapiseira = None\n    while True:\n        line = input()\n        print(f\"${line}\")\n        args = line.split()\n\n        if args[0] == \"end\":\n            break\n        elif args[0] == \"init\":\n            lapiseira = Lapiseira(float(args[1]))\n            continue\n        elif args[0] == \"show\":\n            calibre = lapiseira.getCalibre()\n            bico = lapiseira.getBico()\n            tambor = lapiseira.getTambor()\n\n            bico_str = str(bico) if bico is not None else \"[]\"\n            tambor_str = \"<\" + \"\".join(str(g)) for g in tambor) + \">\" if len(tambor)\n\n            print(f\"calibre: {calibre}, bico: {bico_str}, tambor: {tambor_str}\")\n        \n        elif args[0] == \"insert\":\n                calibre = float(args[1])\n                dureza = args[2]\n                tam = int(args[3])\n                graf = Grafite(dureza, calibre, tam)\n                lapiseira.insert(graf)\n\n        elif args[0] == \"pull\":\n            lapiseira.puxarGrafite()\n\n        elif args[0] == \"remover\":\n            lapiseira.removerGrafite()\n\n        elif args[0] == \"white\":\n            lapiseira.escrever()\n        elif args[0] == \"show\":\n            print(lapiseira)\nmain()\n\n\n\n\n\n        \n\n        \n\n\n\n\n        \n\n        \n    \n\n\n    \n    \n\n\n        \n\n\n        \n        ",
+            "lines": "146"
         }
     ]
 }
