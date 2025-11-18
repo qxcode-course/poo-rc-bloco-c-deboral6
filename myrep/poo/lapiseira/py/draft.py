@@ -4,14 +4,12 @@ class Grafite:
         self.__dureza = dureza
         self.tam = tam
 
-    def setTam(self, valor):
-        self.setTam = valor
     def getCalibre(self):
         return self.__calibre
-    def getDureza(self):
-        return self.__dureza
+    
     def getTam(self):
         return self.tam
+    
     def gastar(self, valor):
         self.tam -= valor
         if self.tam < 0:
@@ -27,13 +25,13 @@ class Lapiseira:
         self.bico = float
         self.tambor: list[Grafite | None] = []
 
-    def getCalibre(self):
+    def getCalibre(self) -> float:
         return self.__calibre
     
-    def getBico(self):
+    def getBico(self) -> Grafite | None:
         return self.bico
     
-    def getTambor(self):
+    def getTambor(self) -> list[Grafite]:
         return self.tambor
 
     def insert(self, graf: Grafite):
@@ -64,7 +62,7 @@ class Lapiseira:
         if self.__bico.getTam() <= 10:
             print("fail: tamanho insuficiente")
             return
-        gasto = self.__bico.usagePersheet()
+        gasto = self.__bico.usageParsheet()
 
         if self.__bico.getTam() - gasto < 10:
             print("fail: folha incompleta")
@@ -72,7 +70,6 @@ class Lapiseira:
             return
         
         self.__bico.gastar(gasto)
-        self.__bico = None
 
     def __str__(self):
         return f"calibre{self.__calibre}"
@@ -95,7 +92,7 @@ def main():
             tambor = lapiseira.getTambor()
 
             bico_str = str(bico) if bico is not None else "[]"
-            tambor_str = "<" + "".join(str(g)) for g in tambor) + ">" if len(tambor)
+            tambor_str = "<" + "".join(str(g) for g in tambor) + ">" if len(tambor) else "<>"
 
             print(f"calibre: {calibre}, bico: {bico_str}, tambor: {tambor_str}")
         
@@ -109,7 +106,7 @@ def main():
         elif args[0] == "pull":
             lapiseira.puxarGrafite()
 
-        elif args[0] == "remover":
+        elif args[0] == "remove":
             lapiseira.removerGrafite()
 
         elif args[0] == "white":
