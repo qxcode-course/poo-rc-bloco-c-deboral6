@@ -36,6 +36,35 @@ class PulaPula:
         brinquedo_str = "[" + ", ".join(str(cria) for cria in self.brinquedo)+ "]"
         return f"{fila_str} {brinquedo_str}"
     
+def main():
+    pulapula = None
+    while True:
+        line = input()
+        print(f"${line}")
+        args = line.split()
+
+        if args[0] == "end":
+            break
+
+        elif args[0] == "arrive":
+            nome = args[1]
+            idade = int(args[2])
+            pulapula.chegar(Crianca(nome, idade))
+
+        elif args[0] == "enter":
+            pulapula.entrar()
+
+        elif args[0] == "leave":
+            pulapula.sair()
+
+        elif args[0] == "remove":
+            nome = args[1]
+            pulapula.remover(nome)
+
+            
+
+
+    
     
         
 
